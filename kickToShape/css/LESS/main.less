@@ -17,7 +17,8 @@ html,body
   top: 0px;
   height: 60px;
   z-index: 1;
-  background-color: @black;
+  background-color: @black-light;
+
   font-size: 1.1rem;
   opacity: .8;
 
@@ -25,7 +26,9 @@ html,body
     position: absolute;
     top: 0;
     left: 0;
-    padding: 20px 35px;
+    width:60px;
+    height: 60px;
+    margin-left: 25px;
   }
 
   a{
@@ -54,8 +57,13 @@ html,body
   border-bottom: 1px solid @light-gray;
 
   .submenu-left{
-    display: inline-block;
-    padding: 11px 35px;
+    display: none;
+
+    @media @mediumQuery{
+      display: inline-block;
+      padding: 11px 35px;
+
+    }
 
     p {
       margin: 0 0 10px;
@@ -65,6 +73,13 @@ html,body
       font-weight: 600;
     }
   }
+
+
+  .menul .li{
+    float: left;
+
+  }
+
 
   .submenu-right {
     float: right;
@@ -92,8 +107,24 @@ html,body
   }
 }
 
+.dropdown-menu{
+  min-width: 100px;
+}
 
 
+.submenu {
+  li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0;
+    white-space: nowrap;
+    float: left;
+    font-weight: 600;
+    &:hover{
+      background: #ccc;
+    }
+  }
+}
 /*Container Styles goes here*/
 
 #container {
@@ -104,14 +135,19 @@ html,body
 
   img{
     border: 0;
+    width: 70%;
   }
+
 }
 
 
 
 #heroImgContainer{
   width: 100%;
-  margin-top: -112px;
+  margin-top: -132px;
+  @media @mediumQuery{
+    margin-top: -112px;
+  }
 }
 #heroImgContainer .show-grid, #container .show-grid{
   margin-bottom: 15px;
@@ -135,9 +171,17 @@ html,body
         color: @white;
       }
       .uppertext{
-        font-size: 46px;
-        line-height: 40px;
+        font-size: 24px;
+        line-height: 30px;
         font-weight: 300;
+
+        @media @mediumQuery{
+          font-size: 46px;
+          line-height: 40px;
+          font-weight: 300;
+
+        }
+
       }
     }
     .hero-grid-banner-text:hover{
@@ -155,13 +199,20 @@ html,body
 
 
 .hero-area-parallax {
-  height: 770px;
-  background-image: url("../assets/images/herobannerimage.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 100% auto;
+  background: url("../assets/images/herobannerimage-mobile.png") center bottom/contain no-repeat;
   position: relative;
+  height: 347px;
+
+  @media @mediumQuery {
+    height: 770px;
+    background-image: url("../assets/images/herobannerimage.png");
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
+    background-position: 100% auto;
+    position: relative;
+  }
+
 }
 
 .imgClass{
@@ -169,10 +220,10 @@ html,body
   width: 100%;
 }
 .large-btn.blue{
-  background-color: @blue;
-  border: 1px solid @blue;
+  background-color: @soft-blue;
+  border: 1px solid @soft-blue;
   color: @white;
-  padding: 10px 35px;
+  padding: 5px 10px;
   font-weight: 600;
 }
 .viewMoreArea{
@@ -200,7 +251,10 @@ html,body
   }
 
   p {
-    font-size: 1vw;
+    font-size: 2vw;
+    @media @mediumQuery{
+      font-size: 1vw;
+    }
   }
 
   footer {
@@ -229,13 +283,16 @@ html,body
   height: 50px;
   p{
     span{
-      font-size: 22px;
+      font-size: 3vw;
+      @media @mediumQuery{
+        font-size: 22px;
+      }
     }
   }
 }
 
 
-.joinifit{
+.joinks{
   margin-left: 15px;
   &>span{
     font-size: 28px;
@@ -286,15 +343,15 @@ i.fa-search {
   -webkit-transition: all .8s ease;
   -moz-transition: all .8s ease;
   transition: all .8s ease;
-  background: url("../assets/images/searchicon.png") no-repeat;
+  background: url("../assets/images/searchIcon.png") no-repeat;
   border: none;
   cursor: pointer;
   &:focus {
-    width: 150px;
+    width: 100px;
     background-color: @white;
     right:100px;
     background: none;
-    border: 1px solid @gray-matterhorn;
+    border: 1px solid @soft-blue;
     -webkit-transition: all .8s ease;
     -moz-transition: all .8s ease;
     transition: all .8s ease;
@@ -342,7 +399,12 @@ i.fa-search {
 .pageControl{
   z-index: 1;
   &.dot{
-    text-align: center;
+    display: none;
+    @media @mediumQuery{
+      text-align: center;
+      display: block;
+
+    }
   }
   a{
     border: 1px solid @blue;
